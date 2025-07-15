@@ -45,10 +45,10 @@ Validate $? "  Enabling MySQL..."
 systemctl start mysqld >> $LOG_FILE_NAME
 Validate $? "Starting mysql-server..."
 
-mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} -e "show databases;" >> $LOG_FILE_NAME
+mysql -h mysql.rproject.live -uroot -pExpenseApp@1 -e "show databases;" >> $LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
-    mysql_secure_installation --set-root-pass $MYSQL_ROOT_PASSWORD >> $LOG_FILE_NAME
+    mysql_secure_installation --set-root-pass ExpenseApp@1 >> $LOG_FILE_NAME
     Validate $? "MYsql password setup..."
 else
     echo -e "MySQL is already configured....$Y Skipping $N"

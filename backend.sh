@@ -76,7 +76,7 @@ Validate $? "Reloading systemd daemon..."
 dnf install mysql -y    &>> $LOG_FILE_NAME 
 Validate $? "Installing MySQL..."
 
-mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql 
+mysql -h mysql.rproject.live -uroot -pExpenseApp@1 < /app/schema/backend.sql 
 Validate $? "Setting up MySQL schema..."
 
 systemctl restart backend &>> $LOG_FILE_NAME
