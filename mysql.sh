@@ -25,7 +25,7 @@ Validate() {
 
 
 CHECK_ROOT() {
-    if [ $USERID -ne 0]
+    if [ $USERID -ne 0 ]
     then 
         echo "Error: you must be a sudo user"
         exit 1
