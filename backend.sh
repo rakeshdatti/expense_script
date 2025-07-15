@@ -10,6 +10,9 @@ LOG_FILE=$( echo $0 | cut -d "/" -f1 )
 TIMESTAMP=$( date +%Y-%m-%d-%H-%M-%S )
 LOG_FILE_NAME="$LOGS_FLOLDER/$LOG_FILE-$TIMESTAMP.log"
 
+echo "Enter password for MySQL root user:"
+read -s MYSQL_ROOT_PASSWORD
+
 Validate() {
     if [ $1 -ne 0 ]
     then 
@@ -58,8 +61,8 @@ Validate $? "Downloading backend files..."
 
 cd /app
 rm -rf /app/*
-unzip /tmp/backend.zip &>>$LOG_FILE_NAME
-VALIDATE $? "Extracted backend code"    
+unzip /tmp/backend.zip &>> $LOG_FILE_NAME
+VAlidate $? "Extracted backend code"    
 
 npm install &>> $LOG_FILE_NAME
 Validate $? "Installing Node.js dependencies..."
