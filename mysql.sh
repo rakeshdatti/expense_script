@@ -37,13 +37,13 @@ CHECK_ROOT
 
 
 dnf install mysql-server -y >> $LOG_FILE_NAME
-Validate $? "Installing nginx..."    
+Validate $? "Installing mysql-server..."    
 
 systemctl enable mysqld >> $LOG_FILE_NAME
 Validate $? "  Enabling MySQL..."
 
 systemctl start mysqld >> $LOG_FILE_NAME
-Validate $? "Starting nginx..."
+Validate $? "Starting mysql-server..."
 
 mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} -e "show databases;" >> $LOG_FILE_NAME
 if [ $? -ne 0 ]
