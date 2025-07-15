@@ -10,8 +10,8 @@ LOG_FILE=$( echo $0 | cut -d "/" -f1 )
 TIMESTAMP=$( date +%Y-%m-%d-%H-%M-%S )
 LOG_FILE_NAME="$LOGS_FLOLDER/$LOG_FILE-$TIMESTAMP.log"
 
-echo "Enter password for MySQL root user:"
-read -s MYSQL_ROOT_PASSWORD
+# echo "Enter password for MySQL root user:"
+# read -s MYSQL_ROOT_PASSWORD
 
 Validate() {
     if [ $1 -ne 0 ]
@@ -76,7 +76,7 @@ Validate $? "Reloading systemd daemon..."
 dnf install mysql -y    &>> $LOG_FILE_NAME 
 Validate $? "Installing MySQL..."
 
-mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql 
+mysql -h mysql.rproject.live -uroot -pExpenseApp@01 < /app/schema/backend.sql 
 Validate $? "Setting up MySQL schema..."
 
 systemctl restart backend &>> $LOG_FILE_NAME
