@@ -62,7 +62,7 @@ Validate $? "Downloading backend files..."
 cd /app
 rm -rf /app/*
 unzip /tmp/backend.zip &>> $LOG_FILE_NAME
-VAlidate $? "Extracted backend code"    
+Validate $? "Extracted backend code"    
 
 npm install &>> $LOG_FILE_NAME
 Validate $? "Installing Node.js dependencies..."
@@ -76,7 +76,7 @@ Validate $? "Reloading systemd daemon..."
 dnf install mysql -y    &>> $LOG_FILE_NAME 
 Validate $? "Installing MySQL..."
 
-mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>> $LOG_FILE_NAME
+mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql 
 Validate $? "Setting up MySQL schema..."
 
 systemctl restart backend &>> $LOG_FILE_NAME
