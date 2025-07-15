@@ -11,7 +11,7 @@ TIMESTAMP=$( date +%Y-%m-%d-%H-%M-%S )
 LOG_FILE_NAME="$LOGS_FLOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 echo "Enter password for MySQL root user:"
-read -s MYSQL_ROOT_PASSWORD
+read MYSQL_ROOT_PASSWORD
 
 Validate() {
     if [ $1 -ne 0 ]
