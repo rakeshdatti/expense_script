@@ -34,13 +34,15 @@ CHECK_ROOT() {
 
 echo "Script started at $TIMESTAMP" >> $LOG_FILE_NAME
 CHECK_ROOT
-dnf install nginx -y >> $LOG_FILE_NAME
+
+
+dnf install mysql-server -y >> $LOG_FILE_NAME
 Validate $? "Installing nginx..."    
 
-systemctl enable nginx >> $LOG_FILE_NAME
-Validate $? "Enabling nginx..."
+systemctl enable mysqld >> $LOG_FILE_NAME
+Validate $? "  Enabling MySQL..."
 
-systemctl start nginx >> $LOG_FILE_NAME
+systemctl start mysqld >> $LOG_FILE_NAME
 Validate $? "Starting nginx..."
 
 mysql -h mysql.rproject.live -uroot -p{$MYSQL_ROOT_PASSWORD} -e "show databases;" >> $LOG_FILE_NAME
